@@ -15,7 +15,11 @@ const PasswordCreteria = ({ password }: { password: string }) => {
 						src={c.met ? '/icons/check.svg' : '/icons/cross.svg'}
 						alt={c.label}
 					/>
-					<span className={c.met ? 'text-green-500' : 'text-gray-500'}>
+					<span
+						className={`${
+							c.met ? 'text-green-500' : 'text-gray-500'
+						} text-sm sm:text-base`}
+					>
 						{c.label}
 					</span>
 				</div>
