@@ -1,12 +1,20 @@
 import Input from '@/components/ui/input'
+import { useAuthStore } from '@/store/useAuthStore'
 import { useState } from 'react'
 import { Link } from 'react-router-dom'
 import PasswordCreteria from './components/PasswordCreteria'
 
 const SignUp = () => {
 	const [password, setPassword] = useState('')
+	const { signup } = useAuthStore() as any
+
 	const handleRegister = (e: React.FormEvent<HTMLFormElement>) => {
 		e.preventDefault()
+		const fullName = (e.target as HTMLFormElement)?.fullName?.value
+		const email = (e.target as HTMLFormElement)?.email?.value
+		const password = (e.target as HTMLFormElement)?.password?.value
+
+		signup(fullName, email, password)
 	}
 	return (
 		<div className='bg_wrapper flex items-center justify-center'>
@@ -27,9 +35,20 @@ const SignUp = () => {
 					</h1>
 				</div>
 				<form onSubmit={handleRegister}>
-					<Input type='text' placeholder='Full name' icon='/icons/user.svg' />
-					<Input type='text' placeholder='Email' icon='/icons/email.svg' />
 					<Input
+						name='fullName'
+						type='text'
+						placeholder='Full name'
+						icon='/icons/user.svg'
+					/>
+					<Input
+						name='email'
+						type='text'
+						placeholder='Email'
+						icon='/icons/email.svg'
+					/>
+					<Input
+						name='password'
 						type='password'
 						onChange={e => setPassword(e.target.value)}
 						placeholder='Password'
@@ -37,9 +56,7 @@ const SignUp = () => {
 					/>
 					<PasswordCreteria password={password} />
 
-					<button disabled className='primary-btn mt-2'>
-						Sign up
-					</button>
+					<button className='primary-btn mt-2'>Sign up</button>
 				</form>
 				<hr className='my-5' />
 				<div className='text-center mb-2'>
