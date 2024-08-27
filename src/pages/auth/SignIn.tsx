@@ -1,13 +1,29 @@
 import Input from '@/components/ui/input'
-import { Link } from 'react-router-dom'
+import { useAuthStore } from '@/store/useAuthStore'
+import toast from 'react-hot-toast'
+import { Link, useNavigate } from 'react-router-dom'
 
 const SignIn = () => {
-	const handleLogin = (e: React.FormEvent<HTMLFormElement>) => {
+	const { login } = useAuthStore() as any
+	const navigate = useNavigate()
+	const handleLogin = async (e: React.FormEvent<HTMLFormElement>) => {
 		e.preventDefault()
+		const email = (e.target as HTMLFormElement).email.value
+		const password = (e.target as HTMLFormElement).password.value
+		try {
+			const data = await login(email, password)
+
+			console.log(data)
+			if (data?.user?.isVerified) {
+				navigate('/dashboard')
+			} else {
+				toast.error('please verify your email')
+			}
+		} catch (error) {}
 	}
 	return (
 		<div className='bg_wrapper flex items-center justify-center'>
-			<div className='bg-[var(--form-dark)] p-8 rounded-md w-full max-w-[450px] mx-4'>
+			<div className='dark:bg-[var(--form-dark)] bg-white p-8 rounded-md w-full max-w-[450px] mx-4'>
 				<div className='relative flex items-center justify-center mb-6'>
 					<div className='absolute left-0 z-10'>
 						<Link to={'/'} className='flex items-center gap-1'>
@@ -21,8 +37,14 @@ const SignIn = () => {
 					</h1>
 				</div>
 				<form onSubmit={handleLogin}>
-					<Input type='text' placeholder='Email' icon='/icons/email.svg' />
 					<Input
+						name='email'
+						type='text'
+						placeholder='Email'
+						icon='/icons/email.svg'
+					/>
+					<Input
+						name='password'
 						type='password'
 						placeholder='Password'
 						icon='/icons/password.svg'

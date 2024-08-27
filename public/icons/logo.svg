@@ -1,0 +1,46 @@
+<svg
+  xmlns="http://www.w3.org/2000/svg"
+  viewBox="0 0 200 200"
+
+  height="50"
+  fill="none"
+>
+  <defs>
+    <!-- Checkmark Gradient -->
+    <linearGradient id="gradientCheckmark" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#6ee7b7" />
+      <stop offset="100%" stop-color="#2a2f38" />
+    </linearGradient>
+
+    <!-- Shadow Effect -->
+    <filter id="shadow" x="0" y="0" width="150%" height="150%">
+      <feDropShadow dx="3" dy="3" stdDeviation="5" flood-color="#000000" />
+    </filter>
+  </defs>
+
+  <!-- Background Circle -->
+  <circle cx="100" cy="100" r="90" fill="url(#gradientBackground)" filter="url(#shadow)" />
+
+  <!-- Decorative Elements -->
+  <path
+    d="M50,70 L150,70 L150,130 L50,130 Z"
+    fill="none"
+    stroke="#ffffff"
+    stroke-width="10"
+    stroke-linecap="round"
+    stroke-linejoin="round"
+  />
+
+  <!-- Checkmark -->
+  <path
+    d="M60,110 L85,135 L140,85"
+    fill="none"
+    stroke="url(#gradientCheckmark)"
+    stroke-width="12"
+    stroke-linecap="round"
+    stroke-linejoin="round"
+  />
+
+  <!-- Stars and Sparkles -->
+
+</svg>

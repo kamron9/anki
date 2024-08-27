@@ -1,24 +1,30 @@
 import Input from '@/components/ui/input'
 import { useAuthStore } from '@/store/useAuthStore'
 import { useState } from 'react'
-import { Link } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 import PasswordCreteria from './components/PasswordCreteria'
 
 const SignUp = () => {
 	const [password, setPassword] = useState('')
 	const { signup } = useAuthStore() as any
+	const navigate = useNavigate()
 
-	const handleRegister = (e: React.FormEvent<HTMLFormElement>) => {
+	const handleRegister = async (e: React.FormEvent<HTMLFormElement>) => {
 		e.preventDefault()
 		const fullName = (e.target as HTMLFormElement)?.fullName?.value
 		const email = (e.target as HTMLFormElement)?.email?.value
 		const password = (e.target as HTMLFormElement)?.password?.value
 
-		signup(fullName, email, password)
+		try {
+			const user = await signup(email, password, fullName)
+			if (user.success) navigate('/verify-email')
+		} catch (error) {
+			console.log(error)
+		}
 	}
 	return (
 		<div className='bg_wrapper flex items-center justify-center'>
-			<div className='bg-[var(--form-dark)] p-8 rounded-md w-full max-w-[450px] mx-6'>
+			<div className='dark:bg-[var(--form-dark)] bg-white p-8 rounded-md w-full max-w-[450px] mx-6'>
 				<div className='relative flex items-center justify-center mb-6'>
 					<div className='absolute left-0 z-10'>
 						<Link

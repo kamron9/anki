@@ -1,8 +1,11 @@
+import { useAuthStore } from '@/store/useAuthStore'
 import { useEffect, useRef, useState } from 'react'
 import toast from 'react-hot-toast'
 import { Link, useNavigate } from 'react-router-dom'
 
 const VerifyEmail = () => {
+	const { verifyEmail, error } = useAuthStore() as any
+
 	const [code, setCode] = useState(['', '', '', '', '', ''])
 	const inputRefs = useRef<HTMLInputElement[]>([])
 
@@ -48,21 +51,24 @@ const VerifyEmail = () => {
 
 		const verificationCode = code.join('')
 		try {
-			// await verifyEmail(verificationCode);
-			toast.success('Email verified successfully')
+			const data = await verifyEmail(verificationCode)
 
-			// navigate('/')
+			if (data?.success) {
+				toast.success('Email verified successfully')
+
+				navigate('/dashboard')
+			}
 		} catch (error) {
 			console.log(error)
 		}
 	}
 
-	// Auto submit when all fields are filled
 	useEffect(() => {
 		if (code.every(digit => digit !== '')) {
 			handleSubmit(new Event('submit') as any)
 		}
 	}, [code])
+
 	return (
 		<div className='bg_wrapper flex items-center justify-center'>
 			<div className='bg-[var(--form-dark)] p-8 rounded-md w-full max-w-[450px] mx-6'>
@@ -78,7 +84,7 @@ const VerifyEmail = () => {
 						Verify email
 					</h1>
 				</div>
-				<form>
+				<div>
 					<div className='flex justify-between gap-1'>
 						{code.map((digit, index) => (
 							<input
@@ -93,8 +99,13 @@ const VerifyEmail = () => {
 							/>
 						))}
 					</div>
+
+					{error?.message && (
+						<p className='text-red-500 mt-1'>{error?.message}</p>
+					)}
+
 					<button className='primary-btn mt-4'>Verify</button>
-				</form>
+				</div>
 			</div>
 		</div>
 	)
