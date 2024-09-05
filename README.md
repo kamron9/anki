@@ -1,50 +1,64 @@
-# React + TypeScript + Vite
+# 📦 AnkiCard — Learn Smarter, Not Harder
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+**AnkiCard** — bu oson va samarali tarzda bilim olish va eslab qolish uchun maxsus yaratilgan platforma. Bilimlaringizni mustahkamlash, lug‘at boyligingizni kengaytirish va yangi tillarni o‘rganish hech qachon bunchalik qiziqarli bo‘lmagan!
 
-Currently, two official plugins are available:
+## 🚀 Xususiyatlar
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+- 🎯 **Interaktiv kartochkalar**: Yangi so‘zlarni, ilmiy atamalarni va boshqa ma'lumotlarni qo‘shib, o‘z bilim kartochkalaringizni yaratishingiz mumkin.
+- 🔄 **Teskari kartalar**: Har bir kartaning ikkita tomoni mavjud — savol va javob, so‘z va tarjima yoki tushuntirish va aniqlik!
+- 🔔 **Kundalik vazifalar**: Kunlik rejalaringizni yaratib, bilimlarni mustahkamlay olishingiz uchun todo funksiyasi mavjud.
+- 🔐 **Xavfsiz ro‘yxatdan o‘tish**: Foydalanuvchilar tizimga kirishlari uchun xavfsiz autentifikatsiya va email orqali tasdiqlash.
+- ⏳ **O'rganish samaradorligi**: Oson ma'lumot olish va uni tez eslab qolish uchun algoritmik kartalar aylanishi.
 
-## Expanding the ESLint configuration
+## 🛠 O‘rnatish
 
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
+Bu loyiha Node.js va React texnologiyalaridan foydalangan holda qurilgan. Loyiha bilan ishlash uchun quyidagi qadamlarni bajaring:
 
-- Configure the top-level `parserOptions` property like this:
+1. Repository'ni klonlash:
 
-```js
-export default tseslint.config({
-  languageOptions: {
-    // other options...
-    parserOptions: {
-      project: ['./tsconfig.node.json', './tsconfig.app.json'],
-      tsconfigRootDir: import.meta.dirname,
-    },
-  },
-})
-```
+   ```bash
+   git clone https://github.com/kamron9/kamron9.git
+   ```
 
-- Replace `tseslint.configs.recommended` to `tseslint.configs.recommendedTypeChecked` or `tseslint.configs.strictTypeChecked`
-- Optionally add `...tseslint.configs.stylisticTypeChecked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and update the config:
+2. Loyihaga o‘tish:
 
-```js
-// eslint.config.js
-import react from 'eslint-plugin-react'
+   ```bash
+   cd AnkiCard
+   ```
 
-export default tseslint.config({
-  // Set the react version
-  settings: { react: { version: '18.3' } },
-  plugins: {
-    // Add the react plugin
-    react,
-  },
-  rules: {
-    // other rules...
-    // Enable its recommended rules
-    ...react.configs.recommended.rules,
-    ...react.configs['jsx-runtime'].rules,
-  },
-})
-```
+3. Zaruriy paketlarni o‘rnatish:
+
+   ```bash
+   npm install
+   ```
+
+4. Loyihani ishga tushirish:
+
+   ```bash
+   npm start
+   ```
+
+## 🧠 Qanday foydalangan bo'lishingiz mumkin?
+
+- **Til o‘rganish**: Lug‘at va grammatikani mustahkamlang.
+- **Testlar va imtihonlar**: Bir necha martalik o‘rganish orqali murakkab mavzularni osongina o‘zlashtiring.
+- **Shaxsiy bilim**: Yangi ma’lumotlarni uzoq vaqtga eslab qolish.
+
+## 🤝 Loyihaga hissa qo'shish
+
+Barchaning hissa qo‘shishini xush ko‘ramiz! Siz quyidagi qadamlar orqali loyihaga qo'shgan hissa qo'shishingiz mumkin:
+
+1. Repository'ni fork qiling.
+2. O'zgartirishlaringizni qiling va commit qiling.
+3. Pull request yarating — sizning g‘oyalaringizni kutib qolamiz!
+
+## 💬 Aloqa
+
+Biror savol yoki taklif bormi? Men bilan bog‘laning:
+
+- **GitHub:** [kamron9](https://github.com/kamron9)
+- **Email:** example@example.com
+
+---
+
+Kelajakdagi o‘rganishlaringizni AnkiCard bilan yanada samaraliroq qiling! 👨‍💻🎓
