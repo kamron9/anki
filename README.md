@@ -57,7 +57,7 @@ Barchaning hissa qo‘shishini xush ko‘ramiz! Siz quyidagi qadamlar orqali loy
 Biror savol yoki taklif bormi? Men bilan bog‘laning:
 
 - **GitHub:** [kamron9](https://github.com/kamron9)
-- **Email:** example@example.com
+- **Email:** kamronalimov80@gmail.com
 
 ---
 
